@@ -103,45 +103,107 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       <div className="border-b border-slate-800" />
 
-      {/* BENEFITS */}
+      {/* TWO COLUMN SECTION */}
       <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
-            <SectionLabel 
-              label="What you can do with it" 
-              title="Make Better Decisions, Faster"
-            />
-            <ul className="space-y-4 text-slate-300">
-              {[
-                'Identify motivated sellers through equity and debt signals',
-                'Structure smarter offers with full financial visibility',
-                'Prepare high-impact listing or buyer presentations',
-                'Uncover off-market opportunities others miss',
-                'Analyse risk before committing capital',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="text-purple-400 font-bold mt-1">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Left Column */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
+              <h3 className="text-4xl font-bold mb-8 text-white">Make Better Decisions, Faster</h3>
+              <ul className="space-y-4 text-slate-300">
+                {[
+                  'Identify motivated sellers through equity and debt signals',
+                  'Structure smarter offers with full financial visibility',
+                  'Prepare high-impact listing or buyer presentations',
+                  'Uncover off-market opportunities others miss',
+                  'Analyse risk before committing capital',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-purple-500 font-bold mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Who it's for</p>
-            <h3 className="text-3xl font-bold mb-8 text-white">Built for High-Stakes Decisions</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { title: 'Agents', desc: 'Preparing listing presentations' },
-                { title: 'Investors', desc: 'Underwriting deals' },
-                { title: 'Buyers', desc: 'Evaluating with full context' },
-                { title: 'Lenders', desc: 'Full financial transparency' },
-              ].map((item, i) => (
-                <div key={i} className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                  <p className="text-xs text-slate-400">{item.desc}</p>
+            {/* Right Column */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Who it's for</p>
+              <h3 className="text-4xl font-bold mb-8 text-white">Built for High-Stakes Decisions</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { title: 'Agents', desc: 'Preparing listing presentations' },
+                  { title: 'Investors', desc: 'Underwriting deals' },
+                  { title: 'Buyers', desc: 'Evaluating with full context' },
+                  { title: 'Lenders', desc: 'Full financial transparency' },
+                ].map((item, i) => (
+                  <div key={i} className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+                    <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                    <p className="text-xs text-slate-400">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SAMPLE REPORT */}
+      <section className="py-20 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Sample report</p>
+              <h3 className="text-4xl font-bold mb-4 text-white">A Complete View, One Report</h3>
+              <p className="text-slate-400">Delivered as a PDF directly to your inbox within minutes.</p>
+            </div>
+
+            {/* Right: Mock Report */}
+            <div className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden">
+              {/* Header */}
+              <div className="bg-purple-600/30 border-b border-purple-600/50 px-6 py-4 flex justify-between items-center">
+                <p className="font-semibold text-white text-sm">Comprehensive Property Report</p>
+                <span className="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded">Full</span>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-800/50 rounded p-3">
+                    <p className="text-xs uppercase text-slate-500 font-bold mb-1">Est. value</p>
+                    <p className="text-white font-bold">$1.42M</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded p-3">
+                    <p className="text-xs uppercase text-slate-500 font-bold mb-1">Equity</p>
+                    <p className="text-white font-bold">$680K</p>
+                  </div>
                 </div>
-              ))}
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Mortgage balance</p>
+                  <p className="text-white text-sm font-semibold">$740,000 <span className="text-slate-500 text-xs">· 2 active loans</span></p>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Liens on title</p>
+                  <p className="text-red-400 text-sm font-semibold">1 lien · $24,500 <span className="bg-orange-900/40 text-orange-300 text-xs px-2 py-1 rounded ml-2">Contractor</span></p>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Ownership chain</p>
+                  <p className="text-slate-400 text-xs">J. Whitmore · 2019 · $1.18M<br/>D. & C. Park · 2011 · $875K</p>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">AI opportunity signal</p>
+                  <div className="bg-slate-800/50 rounded h-2 mb-1 overflow-hidden">
+                    <div className="bg-teal-500 h-full" style={{ width: '84%' }}></div>
+                  </div>
+                  <p className="text-teal-400 text-xs font-semibold">High motivation · equity-rich, lien present</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

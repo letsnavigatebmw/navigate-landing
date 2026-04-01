@@ -117,6 +117,106 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
+      <div className="border-b border-slate-800" />
+
+      {/* TWO COLUMN SECTION */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Left Column */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
+              <h3 className="text-4xl font-bold mb-8 text-white">Turn Insight Into Action</h3>
+              <ul className="space-y-4 text-slate-300">
+                {[
+                  'Identify and qualify prospects instantly',
+                  'Walk into conversations with confidence',
+                  'Spot pricing opportunities in your market',
+                  'Prioritise which properties are worth your time',
+                  'Build smarter, more targeted outreach',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-purple-500 font-bold mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right Column */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Who it's for</p>
+              <h3 className="text-4xl font-bold mb-8 text-white">Built for Speed and Scale</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { title: 'Agents', desc: 'Prospecting without wasted calls' },
+                  { title: 'Teams', desc: 'Running outbound at scale' },
+                  { title: 'Investors', desc: 'Screening properties quickly' },
+                  { title: 'Lenders', desc: 'Fast, reliable property context' },
+                ].map((item, i) => (
+                  <div key={i} className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+                    <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                    <p className="text-xs text-slate-400">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SAMPLE REPORT */}
+      <section className="py-20 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Sample report</p>
+              <h3 className="text-4xl font-bold mb-4 text-white">See What You'll Receive</h3>
+              <p className="text-slate-400">A clean PDF delivered straight to your inbox within minutes of submitting.</p>
+            </div>
+
+            {/* Right: Mock Report */}
+            <div className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden">
+              {/* Header */}
+              <div className="bg-purple-600/30 border-b border-purple-600/50 px-6 py-4 flex justify-between items-center">
+                <p className="font-semibold text-white text-sm">Standard Property Report</p>
+                <span className="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded">PDF</span>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 space-y-4">
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Address</p>
+                  <p className="text-white text-sm font-semibold">142 Harbour View Rd, Santa Monica CA <span className="bg-purple-600/20 text-purple-300 text-xs px-2 py-1 rounded ml-2">Verified</span></p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-800/50 rounded p-3">
+                    <p className="text-xs uppercase text-slate-500 font-bold mb-1">Est. value</p>
+                    <p className="text-white font-bold">$1.42M</p>
+                  </div>
+                  <div className="bg-slate-800/50 rounded p-3">
+                    <p className="text-xs uppercase text-slate-500 font-bold mb-1">Last sale</p>
+                    <p className="text-white font-bold">$1.18M</p>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Owner</p>
+                  <p className="text-white text-sm">J. & M. Whitmore</p>
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase text-slate-500 font-bold mb-2">Specs</p>
+                  <p className="text-slate-400 text-xs">4 bed · 3 bath · 2,340 sqft · Built 1987</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )
