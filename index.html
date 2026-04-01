@@ -1,13 +1,464 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>navigate-landing</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#08080f;--bg2:#0e0e1c;--text:#ffffff;--text2:rgba(255,255,255,0.65);--text3:rgba(255,255,255,0.38);--p:#7c72e8;--p2:#534AB7;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+
+/* NAV */
+.nav{background:#0d0d1a;border-bottom:1px solid rgba(255,255,255,0.15);height:60px;display:flex;align-items:center;padding:0 28px}
+.nav-logo{display:flex;align-items:center;gap:9px}
+.nav-logo-text{font-size:17px;font-weight:700;color:#9088f0}
+
+/* ─── TOGGLE: both buttons always white text ─── */
+.toggle-bar{padding:18px 28px;background:#1a1a35;border-bottom:2px solid #534AB7;display:flex;justify-content:center}
+.tog{display:inline-flex;border-radius:50px;border:2px solid #7c72e8;overflow:hidden}
+.tog button{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  padding:13px 36px;
+  border:none;
+  cursor:pointer;
+  letter-spacing:0.1px;
+  white-space:nowrap;
+  transition:background 0.15s;
+  /* BOTH states use white text — no exceptions */
+  color:#ffffff !important;
+}
+.tog button.off{ background:#2a2660; }
+.tog button.off:hover{ background:#352f80; }
+.tog button.on{ background:#534AB7; }
+.tog button.on:hover{ background:#6059c8; }
+
+.page{display:none}.page.active{display:block}
+
+/* HERO */
+.hero{position:relative;padding:60px 28px 44px;text-align:center;overflow:hidden}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:380px;background:radial-gradient(ellipse 65% 55% at 50% 35%,rgba(83,74,183,0.4) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c0b8ff;border:1px solid rgba(124,114,232,0.5);padding:6px 18px;border-radius:14px;margin-bottom:22px;background:rgba(83,74,183,0.18)}
+.price-badge{font-size:13px;font-weight:800;color:#fff;background:#534AB7;padding:3px 10px;border-radius:8px;letter-spacing:0;text-transform:none}
+.hero h1{font-size:clamp(32px,5.5vw,54px);font-weight:700;line-height:1.1;letter-spacing:-1.5px;margin-bottom:18px;color:#ffffff}
+.hero h1 em{font-style:italic;color:#9088f0;font-weight:700}
+.hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto 28px;font-weight:300;line-height:1.8}
+.trust-line{font-size:12px;color:var(--text3);margin-top:16px}
+.trust-line span{margin:0 10px;opacity:0.4}
+
+/* INTAKE */
+.intake-box{max-width:560px;margin:0 auto;background:#12122a;border:1px solid rgba(124,114,232,0.4);border-radius:16px;padding:26px 26px 20px}
+.intake-title{font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);margin-bottom:18px}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:6px;letter-spacing:0.6px;text-transform:uppercase}
+.fg input,.fg select{width:100%;padding:11px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:9px;font-size:14px;font-family:'Inter',sans-serif;color:#ffffff;outline:none;transition:border-color 0.2s;appearance:none;-webkit-appearance:none}
+.fg input::placeholder{color:rgba(255,255,255,0.28)}
+.fg input:focus,.fg select:focus{border-color:rgba(124,114,232,0.8)}
+.fg select option{background:#1a1a2e;color:white}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sel-wrap{position:relative}
+.sel-wrap::after{content:'';position:absolute;right:13px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid rgba(255,255,255,0.45);pointer-events:none}
+
+/* INBOX CALLOUT */
+.inbox-callout{display:flex;align-items:flex-start;gap:12px;background:rgba(93,202,165,0.07);border:1px solid rgba(93,202,165,0.3);border-radius:10px;padding:13px 15px;margin-bottom:13px}
+.inbox-icon{flex-shrink:0;width:34px;height:34px;background:rgba(93,202,165,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.inbox-text strong{display:block;font-size:13px;font-weight:700;color:#5dcaa5;margin-bottom:3px}
+.inbox-text span{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5}
+
+/* SALES CHECKBOX */
+.sales-checkbox{display:flex;align-items:flex-start;gap:12px;background:rgba(124,114,232,0.08);border:1px solid rgba(124,114,232,0.28);border-radius:10px;padding:13px 14px;margin-bottom:14px;cursor:pointer;transition:background 0.2s}
+.sales-checkbox:hover{background:rgba(124,114,232,0.14)}
+.sales-checkbox input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:#534AB7;cursor:pointer;margin-top:2px}
+.sales-checkbox-text{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.55;cursor:pointer;text-align:left}
+.sales-checkbox-text strong{color:#c0b8ff;font-weight:600;display:block;margin-bottom:2px}
+.win{color:#ffffff;font-weight:700}
+
+/* ADDRESS ROW */
+.addr-row{display:flex;gap:10px;margin-top:4px;align-items:stretch}
+.addr-input{flex:1;padding:13px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:28px;font-size:14px;font-family:'Inter',sans-serif;color:#ffffff;outline:none;transition:border-color 0.2s}
+.addr-input::placeholder{color:rgba(255,255,255,0.3)}
+.addr-input:focus{border-color:rgba(124,114,232,0.7)}
+
+/* ─── GET REPORT BUTTON: always white text, two clear states ─── */
+.get-btn{
+  display:inline-block;
+  padding:13px 22px;
+  border-radius:28px;
+  font-size:14px;
+  font-weight:700;
+  font-family:'Inter',sans-serif;
+  white-space:nowrap;
+  letter-spacing:0.1px;
+  transition:all 0.2s;
+  cursor:not-allowed;
+  /* INACTIVE: medium purple bg, white text, white text is always legible */
+  background:#2a2660;
+  color:#ffffff !important;
+  border:2px solid #7c72e8;
+}
+.get-btn.ready{
+  background:#534AB7;
+  color:#ffffff !important;
+  border-color:#534AB7;
+  cursor:pointer;
+  box-shadow:0 4px 24px rgba(83,74,183,0.55);
+}
+.get-btn.ready:hover{background:#6059c8;border-color:#6059c8}
+
+.form-note{font-size:11px;color:var(--text3);text-align:center;margin-top:10px}
+
+/* TESTIMONIAL */
+.testimonial-wrap{max-width:560px;margin:20px auto 0}
+.testimonial{background:#0f0f22;border:1px solid rgba(124,114,232,0.25);border-left:3px solid #534AB7;border-radius:0 12px 12px 0;padding:18px 20px;text-align:left}
+.testimonial-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:12px}
+.testimonial-author{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{width:34px;height:34px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0}
+.testimonial-name{font-size:12px;font-weight:700;color:#c0b8ff}
+.testimonial-company{font-size:11px;color:var(--text3);margin-top:1px}
+
+.success-box{max-width:560px;margin:32px auto 0;background:#12122a;border:1px solid rgba(124,114,232,0.4);border-radius:16px;padding:36px;text-align:center;display:none}
+.success-icon{width:52px;height:52px;background:rgba(124,114,232,0.15);border:1px solid rgba(124,114,232,0.4);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.success-box h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.success-box p{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* SECTIONS */
+.divider{height:1px;background:rgba(255,255,255,0.08);margin:0 28px}
+.section{max-width:1080px;margin:0 auto;padding:56px 28px}
+.slabel{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--p);margin-bottom:10px}
+.sh{font-size:clamp(22px,2.8vw,32px);font-weight:700;letter-spacing:-0.5px;margin-bottom:10px;line-height:1.2}
+.ssub{font-size:15px;color:var(--text2);max-width:480px;font-weight:300;line-height:1.75}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;margin-top:32px}
+.fc{background:var(--bg2);padding:22px 18px;transition:background 0.18s}
+.fc:hover{background:rgba(124,114,232,0.07)}
+.fi{width:30px;height:30px;background:rgba(124,114,232,0.12);border:1px solid rgba(124,114,232,0.25);border-radius:8px;margin-bottom:12px;display:flex;align-items:center;justify-content:center}
+.fc h3{font-size:13px;font-weight:600;margin-bottom:4px}
+.fc p{font-size:12px;color:var(--text3);line-height:1.6}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.alist{list-style:none;margin-top:22px}
+.alist li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:14px;color:var(--text2);display:flex;align-items:center;gap:11px}
+.alist li:last-child{border:none}
+.ldot{width:5px;height:5px;background:var(--p);border-radius:50%;flex-shrink:0}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px}
+.wc{border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:14px;background:rgba(255,255,255,0.03)}
+.wc h4{font-size:13px;font-weight:600;margin-bottom:4px}
+.wc p{font-size:12px;color:var(--text3);line-height:1.5}
+.prev-band{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:56px 28px}
+.prev-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.mock{background:#0a0a18;border:1px solid rgba(255,255,255,0.2);border-radius:12px;overflow:hidden}
+.mhdr{background:rgba(83,74,183,0.22);border-bottom:1px solid rgba(124,114,232,0.25);padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.mhdr-t{font-size:13px;font-weight:600}
+.mbadge{font-size:10px;font-weight:700;background:#534AB7;color:white;padding:2px 9px;border-radius:5px;letter-spacing:0.5px}
+.mbody{padding:16px 18px}
+.mf{margin-bottom:12px}
+.mf label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:3px}
+.mf .mv{font-size:13px;font-weight:500}
+.mg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.mm{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:9px 11px}
+.mm label{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:2px}
+.mm span{font-size:15px;font-weight:600}
+.mbar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin-top:5px}
+.mbar-fill{height:100%;background:var(--p);border-radius:2px}
+.mtag{display:inline-block;background:rgba(124,114,232,0.18);color:#c0b8ff;font-size:10px;padding:2px 6px;border-radius:4px;margin-left:5px}
+.comp-wrap{margin-top:32px;border:1px solid rgba(255,255,255,0.09);border-radius:12px;overflow:hidden}
+.ctab{width:100%;border-collapse:collapse;font-size:13px}
+.ctab th{background:rgba(255,255,255,0.04);padding:12px 18px;text-align:left;font-weight:700;font-size:11px;letter-spacing:0.5px;color:rgba(255,255,255,0.45);border-bottom:1px solid rgba(255,255,255,0.08)}
+.ctab th:not(:first-child){text-align:center}
+.ctab td{padding:11px 18px;border-bottom:1px solid rgba(255,255,255,0.06);color:var(--text2)}
+.ctab td:not(:first-child){text-align:center}
+.ctab tr:last-child td{border:none}
+.ctab tr:hover td{background:rgba(255,255,255,0.02)}
+.ck{color:#9088f0;font-size:15px;font-weight:700}.cx{color:rgba(255,255,255,0.15);font-size:15px}
+.chi{background:rgba(124,114,232,0.07)}
+.teaser{border:1px solid rgba(124,114,232,0.35);border-radius:12px;padding:20px 24px;margin-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;background:rgba(124,114,232,0.07)}
+.teaser p{font-size:14px;color:var(--text2);max-width:380px}
+.btn-ol{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#ffffff;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+.btn-ol:hover{background:rgba(255,255,255,0.07)}
+
+/* PRICING */
+.pricing-band{background:#0e0e20;border-top:1px solid rgba(124,114,232,0.25);border-bottom:1px solid rgba(124,114,232,0.25);padding:48px 28px}
+.pricing-inner{max-width:700px;margin:0 auto;text-align:center}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;text-align:left}
+.pc{border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:28px 24px;background:#12122a}
+.pc.featured{border:2px solid #534AB7;background:#14143a}
+.pc-label{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--p);margin-bottom:10px}
+.pc-price{font-size:42px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
+.pc-price sup{font-size:20px;font-weight:700;vertical-align:top;margin-top:8px;display:inline-block}
+.pc-desc{font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.5}
+.pc-features{list-style:none;margin-bottom:20px}
+.pc-features li{font-size:13px;color:var(--text2);padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px}
+.pc-features li:last-child{border:none}
+.pc-badge{display:inline-block;background:#534AB7;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:10px;letter-spacing:0.5px}
+
+/* WHY BAND */
+.why-band{background:#12122a;border-top:1px solid rgba(124,114,232,0.2);border-bottom:1px solid rgba(124,114,232,0.2);padding:64px 28px;text-align:center;position:relative;overflow:hidden}
+.why-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:280px;background:radial-gradient(ellipse,rgba(83,74,183,0.3) 0%,transparent 65%);pointer-events:none}
+.why-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9088f0;margin-bottom:12px;position:relative;z-index:1}
+.why-band h2{font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-0.5px;line-height:1.2;position:relative;z-index:1;color:#ffffff;margin-bottom:16px}
+.why-band h2 em{font-style:normal;color:#9088f0}
+.why-band p{font-size:16px;color:rgba(255,255,255,0.7);max-width:540px;margin:0 auto;font-weight:300;line-height:1.85;position:relative;z-index:1}
+
+/* FOOTER */
+.footer{background:#06060e;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-main{max-width:1080px;margin:0 auto;padding:56px 28px 40px;display:grid;grid-template-columns:1.6fr 1fr;gap:60px}
+.footer-logo{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.footer-logo-text{font-size:16px;font-weight:700;color:#9088f0;letter-spacing:0.5px;text-transform:uppercase}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:340px;margin-bottom:24px}
+.footer-legal{display:flex;flex-wrap:wrap}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.footer-legal a:hover{color:rgba(255,255,255,0.65)}
+.footer-legal span{font-size:12px;color:rgba(255,255,255,0.2);margin:0 8px}
+.footer-res-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px}
+.footer-res a{display:block;font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:10px;transition:color 0.2s}
+.footer-res a:hover{color:#ffffff}
+.footer-bottom{background:#030308;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-bottom-inner{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-social{display:flex;align-items:center;gap:16px}
+.si{width:20px;height:20px;display:flex;align-items:center;justify-content:center;opacity:0.5;transition:opacity 0.2s;cursor:pointer}
+.si:hover{opacity:0.9}
+
+@media(max-width:680px){.split{grid-template-columns:1fr}.prev-inner{grid-template-columns:1fr}.teaser{flex-direction:column}.fg-row{grid-template-columns:1fr}.addr-row{flex-direction:column}.pricing-cards{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr;gap:36px}.footer-bottom-inner{flex-direction:column;align-items:flex-start}}
+</style>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="11.5" stroke="#9088f0" stroke-width="2.2"/><circle cx="13" cy="13" r="6.2" stroke="#9088f0" stroke-width="1.6"/><path d="M10.5 13c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5" stroke="#9088f0" stroke-width="1.5" stroke-linecap="round"/><circle cx="13" cy="13" r="1.2" fill="#9088f0"/></svg>
+    <span class="nav-logo-text">navigate</span>
+  </div>
+</div>
+
+<!-- TOGGLE -->
+<div class="toggle-bar">
+  <div class="tog">
+    <button id="btn-std" class="on" onclick="switchPage('standard',this)">Standard Report — $4.99</button>
+    <button id="btn-comp" class="off" onclick="switchPage('comprehensive',this)">Comprehensive Report — $19.99</button>
+  </div>
+</div>
+
+<!-- ===== STANDARD PAGE ===== -->
+<div id="page-standard" class="page active">
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-pill">Standard Report <span class="price-badge">$4.99</span></div>
+      <h1>Get the Property Insights<br>You Need—<em>In Seconds</em></h1>
+      <p class="hero-sub">A fast, reliable snapshot of any property. Ownership, value, and market activity, so you can prospect smarter and move faster.</p>
+
+      <div class="intake-box" id="intake-std">
+        <div class="intake-title">Fill in your details to receive your report</div>
+        <div class="fg-row">
+          <div class="fg"><label>First name</label><input type="text" id="s-first" placeholder="First name" oninput="chkS()"></div>
+          <div class="fg"><label>Last name</label><input type="text" id="s-last" placeholder="Last name" oninput="chkS()"></div>
+        </div>
+        <div class="fg"><label>Email address</label><input type="email" id="s-email" placeholder="you@example.com" oninput="chkS()"></div>
+        <div class="fg"><label>Profession</label><div class="sel-wrap"><select id="s-prof" onchange="chkS()"><option value="" disabled selected>Select your profession</option><option>Realtor</option><option>Lender</option><option>Investor / Wholesaler</option><option>Property Service Provider</option><option>Other</option></select></div></div>
+        <div class="inbox-callout">
+          <div class="inbox-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#5dcaa5" stroke-width="1.4"/><path d="M1.5 5.5l6.5 4 6.5-4" stroke="#5dcaa5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="inbox-text"><strong>Delivered straight to your inbox</strong><span>Your report arrives as a branded PDF within minutes of submitting.</span></div>
+        </div>
+        <label class="sales-checkbox"><input type="checkbox" id="s-rep"><div class="sales-checkbox-text"><strong>Connect with a Navigate Sales Rep to extract even more value from the report</strong>We're here to help you spot the signals that help you <span class="win">WIN MORE LISTINGS.</span></div></label>
+        <div class="addr-row">
+          <input class="addr-input" id="s-addr" type="text" placeholder="Enter a property address..." oninput="chkS()">
+          <button class="get-btn" id="s-btn" onclick="subS()">Get Report — $4.99</button>
+        </div>
+        <p class="form-note">Your information is kept private and never sold.</p>
+      </div>
+
+      <div class="success-box" id="success-std">
+        <div class="success-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4.5 11l5 5 8-9" stroke="#9088f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Report on its way</h3>
+        <p>Your Standard Report will land in<br><span id="s-confirm" style="color:#c0b8ff;font-weight:600"></span> within minutes.</p>
+      </div>
+
+      <div class="testimonial-wrap">
+        <div class="testimonial">
+          <div class="testimonial-quote">"I purchased the comprehensive report and spoke to a Navigate sales rep and it unlocked so much more value — I was able to spot signals that I otherwise would have missed."</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">BW</div><div><div class="testimonial-name">Brooke Winner</div><div class="testimonial-company">The Beverly Hills Estates</div></div></div>
+        </div>
+      </div>
+      <p class="trust-line">No subscription<span>·</span>Delivered in minutes<span>·</span>PDF format</p>
+    </div>
+  </div>
+
+  <div class="pricing-band">
+    <div class="pricing-inner">
+      <div class="slabel">Pricing</div><div class="sh">Simple & Transparent Pricing</div>
+      <div class="ssub" style="margin:0 auto">Pay only for what you need. No subscriptions, no commitments.</div>
+      <div class="pricing-cards">
+        <div class="pc featured"><div class="pc-badge">You're here</div><div class="pc-label">Standard Report</div><div class="pc-price"><sup>$</sup>4.99</div><div class="pc-desc">Fast property snapshot for prospecting and outreach.</div><ul class="pc-features"><li><span class="ck">✓</span> Property overview</li><li><span class="ck">✓</span> Ownership snapshot</li><li><span class="ck">✓</span> Valuation insights</li><li><span class="ck">✓</span> Market trends</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> Mortgage data</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> Liens & debt</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> AI investment signals</li></ul></div>
+        <div class="pc"><div class="pc-label">Comprehensive Report</div><div class="pc-price"><sup>$</sup>19.99</div><div class="pc-desc">Full financial and ownership intelligence for serious decisions.</div><ul class="pc-features"><li><span class="ck">✓</span> Everything in Standard</li><li><span class="ck">✓</span> Mortgage & loan data</li><li><span class="ck">✓</span> Liens & debt obligations</li><li><span class="ck">✓</span> Full transaction history</li><li><span class="ck">✓</span> AI investment insights</li></ul><button class="btn-ol" style="width:100%;text-align:center" onclick="switchPage('comprehensive',document.getElementById('btn-comp'))">View Comprehensive →</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section">
+    <div class="slabel">What you get</div><div class="sh">Everything You Need, at a Glance</div><div class="ssub">Streamlined to give you immediate clarity without overwhelming detail.</div>
+    <div class="feat-grid">
+      <div class="fc"><div class="fi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2" stroke="#7c72e8" stroke-width="1.4"/><path d="M4 7h6M4 4.5h6M4 9.5h4" stroke="#7c72e8" stroke-width="1.1" stroke-linecap="round"/></svg></div><h3>Property overview</h3><p>Address, specs, and key characteristics</p></div>
+      <div class="fc"><div class="fi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5.5" r="2.5" stroke="#7c72e8" stroke-width="1.4"/><path d="M2 12.5c0-2.76 2.24-3.5 5-3.5s5 .74 5 3.5" stroke="#7c72e8" stroke-width="1.4" stroke-linecap="round"/></svg></div><h3>Ownership snapshot</h3><p>Current owner and history</p></div>
+      <div class="fc"><div class="fi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10l2.5-3.5 2.5 2 2.5-4.5 2.5 2.5" stroke="#7c72e8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Valuation insights</h3><p>Estimated value and last sale price</p></div>
+      <div class="fc"><div class="fi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#7c72e8" stroke-width="1.4"/><path d="M7 4.5V7.3l1.2 1.2" stroke="#7c72e8" stroke-width="1.4" stroke-linecap="round"/></svg></div><h3>Market activity</h3><p>Sales history and trend signals</p></div>
+      <div class="fc"><div class="fi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 12.5V5.5l5.5-3 5.5 3v7" stroke="#7c72e8" stroke-width="1.4" stroke-linejoin="round"/><rect x="5" y="8.5" width="4" height="4" stroke="#7c72e8" stroke-width="1.1"/></svg></div><h3>Property features</h3><p>Physical attributes and details</p></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section">
+    <div class="split">
+      <div><div class="slabel">What you can do with it</div><div class="sh">Turn Insight Into Action</div><ul class="alist"><li><span class="ldot"></span>Identify and qualify prospects instantly</li><li><span class="ldot"></span>Walk into conversations with confidence</li><li><span class="ldot"></span>Spot pricing opportunities in your market</li><li><span class="ldot"></span>Prioritise which properties are worth your time</li><li><span class="ldot"></span>Build smarter, more targeted outreach</li></ul></div>
+      <div><div class="slabel">Who it's for</div><div class="sh">Built for Speed and Scale</div><div class="who-grid"><div class="wc"><h4>Agents</h4><p>Prospecting without wasted calls</p></div><div class="wc"><h4>Teams</h4><p>Running outbound at scale</p></div><div class="wc"><h4>Investors</h4><p>Screening properties quickly</p></div><div class="wc"><h4>Lenders</h4><p>Fast, reliable property context</p></div></div></div>
+    </div>
+  </div>
+
+  <div class="prev-band">
+    <div class="prev-inner">
+      <div><div class="slabel">Sample report</div><div class="sh">See What You'll Receive</div><div class="ssub">A clean PDF delivered straight to your inbox.</div></div>
+      <div class="mock"><div class="mhdr"><div class="mhdr-t">Standard Property Report</div><div class="mbadge">PDF</div></div><div class="mbody"><div class="mf"><label>Address</label><div class="mv">142 Harbour View Rd, Santa Monica CA<span class="mtag">Verified</span></div></div><div class="mg2"><div class="mm"><label>Est. value</label><span>$1.42M</span></div><div class="mm"><label>Last sale</label><span>$1.18M</span></div></div><div class="mf"><label>Owner</label><div class="mv">J. & M. Whitmore</div></div><div class="mf"><label>Market trend</label><div class="mbar"><div class="mbar-fill" style="width:72%"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:4px"><span>Cooling</span><span style="color:#c0b8ff">72nd pct.</span><span>Hot</span></div></div><div class="mf"><label>Specs</label><div class="mv" style="font-size:12px;color:var(--text3)">4 bed · 3 bath · 2,340 sqft · Built 1987</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="slabel">Comparison</div><div class="sh">Standard vs Comprehensive</div>
+    <div class="comp-wrap"><table class="ctab"><thead><tr><th>Feature</th><th>Standard — $4.99</th><th class="chi">Comprehensive — $19.99</th></tr></thead><tbody><tr><td>Property overview</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Ownership snapshot</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Valuation insights</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Market trends</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Mortgage & loan data</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Liens & debt obligations</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>AI investment insights</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr></tbody></table></div>
+    <div class="teaser"><p>Looking for full financial and ownership intelligence? The Comprehensive Report uncovers what most platforms miss.</p><button class="btn-ol" onclick="switchPage('comprehensive',document.getElementById('btn-comp'))">View Comprehensive — $19.99 →</button></div>
+  </div>
+</div>
+
+<!-- ===== COMPREHENSIVE PAGE ===== -->
+<div id="page-comprehensive" class="page">
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-pill">Comprehensive Report <span class="price-badge">$19.99</span></div>
+      <h1>See Everything<br>Behind the Property—<em>In Seconds</em></h1>
+      <p class="hero-sub">Ownership, equity, debt, and opportunity. Fully mapped in one report designed for serious decision-making.</p>
+
+      <div class="intake-box" id="intake-comp">
+        <div class="intake-title">Fill in your details to receive your report</div>
+        <div class="fg-row">
+          <div class="fg"><label>First name</label><input type="text" id="c-first" placeholder="First name" oninput="chkC()"></div>
+          <div class="fg"><label>Last name</label><input type="text" id="c-last" placeholder="Last name" oninput="chkC()"></div>
+        </div>
+        <div class="fg"><label>Email address</label><input type="email" id="c-email" placeholder="you@example.com" oninput="chkC()"></div>
+        <div class="fg"><label>Profession</label><div class="sel-wrap"><select id="c-prof" onchange="chkC()"><option value="" disabled selected>Select your profession</option><option>Realtor</option><option>Lender</option><option>Investor / Wholesaler</option><option>Property Service Provider</option><option>Other</option></select></div></div>
+        <div class="inbox-callout">
+          <div class="inbox-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#5dcaa5" stroke-width="1.4"/><path d="M1.5 5.5l6.5 4 6.5-4" stroke="#5dcaa5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="inbox-text"><strong>Delivered straight to your inbox</strong><span>Your report arrives as a branded PDF within minutes of submitting.</span></div>
+        </div>
+        <label class="sales-checkbox"><input type="checkbox" id="c-rep" checked><div class="sales-checkbox-text"><strong>Connect with a Navigate Sales Rep to extract even more value from the report</strong>We're here to help you spot the signals that help you <span class="win">WIN MORE LISTINGS.</span></div></label>
+        <div class="addr-row">
+          <input class="addr-input" id="c-addr" type="text" placeholder="Enter a property address..." oninput="chkC()">
+          <button class="get-btn" id="c-btn" onclick="subC()">Get Full Report — $19.99</button>
+        </div>
+        <p class="form-note">Your information is kept private and never sold.</p>
+      </div>
+
+      <div class="success-box" id="success-comp">
+        <div class="success-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4.5 11l5 5 8-9" stroke="#9088f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Report on its way</h3>
+        <p>Your Comprehensive Report will land in<br><span id="c-confirm" style="color:#c0b8ff;font-weight:600"></span> within minutes.</p>
+      </div>
+
+      <div class="testimonial-wrap">
+        <div class="testimonial">
+          <div class="testimonial-quote">"I purchased the comprehensive report and spoke to a Navigate sales rep and it unlocked so much more value — I was able to spot signals that I otherwise would have missed."</div>
+          <div class="testimonial-author"><div class="testimonial-avatar">BW</div><div><div class="testimonial-name">Brooke Winner</div><div class="testimonial-company">The Beverly Hills Estates</div></div></div>
+        </div>
+      </div>
+      <p class="trust-line">Investor-grade insights<span>·</span>On demand<span>·</span>No subscription</p>
+    </div>
+  </div>
+
+  <div class="pricing-band">
+    <div class="pricing-inner">
+      <div class="slabel">Pricing</div><div class="sh">Simple & Transparent Pricing</div>
+      <div class="ssub" style="margin:0 auto">Pay only for what you need. No subscriptions, no commitments.</div>
+      <div class="pricing-cards">
+        <div class="pc"><div class="pc-label">Standard Report</div><div class="pc-price"><sup>$</sup>4.99</div><div class="pc-desc">Fast property snapshot for prospecting and outreach.</div><ul class="pc-features"><li><span class="ck">✓</span> Property overview</li><li><span class="ck">✓</span> Ownership snapshot</li><li><span class="ck">✓</span> Valuation insights</li><li><span class="ck">✓</span> Market trends</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> Mortgage data</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> Liens & debt</li><li style="color:rgba(255,255,255,0.25)"><span class="cx">—</span> AI signals</li></ul><button class="btn-ol" style="width:100%;text-align:center" onclick="switchPage('standard',document.getElementById('btn-std'))">View Standard →</button></div>
+        <div class="pc featured"><div class="pc-badge">You're here</div><div class="pc-label">Comprehensive Report</div><div class="pc-price"><sup>$</sup>19.99</div><div class="pc-desc">Full financial and ownership intelligence for serious decisions.</div><ul class="pc-features"><li><span class="ck">✓</span> Everything in Standard</li><li><span class="ck">✓</span> Mortgage & loan data</li><li><span class="ck">✓</span> Liens & debt obligations</li><li><span class="ck">✓</span> Full transaction history</li><li><span class="ck">✓</span> AI investment insights</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-band">
+    <div class="why-glow"></div>
+    <div class="why-label">Why it matters</div>
+    <h2>The Difference <em>Is Depth</em></h2>
+    <p>Most property tools show surface-level data. This report reveals the full financial and ownership picture, so you can act with precision, not guesswork.</p>
+  </div>
+
+  <div class="section">
+    <div class="split">
+      <div><div class="slabel">What you can do with it</div><div class="sh">Make Better Decisions, Faster</div><ul class="alist"><li><span class="ldot"></span>Identify motivated sellers through equity and debt signals</li><li><span class="ldot"></span>Structure smarter offers with full financial visibility</li><li><span class="ldot"></span>Prepare high-impact listing or buyer presentations</li><li><span class="ldot"></span>Uncover off-market opportunities others miss</li><li><span class="ldot"></span>Analyse risk before committing capital</li></ul></div>
+      <div><div class="slabel">Who it's for</div><div class="sh">Built for High-Stakes Decisions</div><div class="who-grid"><div class="wc"><h4>Agents</h4><p>Preparing listing presentations</p></div><div class="wc"><h4>Investors</h4><p>Underwriting deals</p></div><div class="wc"><h4>Buyers</h4><p>Evaluating with full context</p></div><div class="wc"><h4>Lenders</h4><p>Full financial transparency</p></div></div></div>
+    </div>
+  </div>
+
+  <div class="prev-band">
+    <div class="prev-inner">
+      <div><div class="slabel">Sample report</div><div class="sh">A Complete View, One Report</div><div class="ssub">Delivered as a PDF directly to your inbox within minutes.</div></div>
+      <div class="mock"><div class="mhdr"><div class="mhdr-t">Comprehensive Property Report</div><div class="mbadge">Full</div></div><div class="mbody"><div class="mg2"><div class="mm"><label>Est. value</label><span>$1.42M</span></div><div class="mm"><label>Equity</label><span>$680K</span></div></div><div class="mf"><label>Mortgage balance</label><div class="mv">$740,000 <span style="font-size:11px;color:var(--text3)">· 2 active loans</span></div></div><div class="mf"><label>Liens on title</label><div class="mv" style="color:#f09595">1 lien · $24,500 <span style="background:rgba(220,120,40,0.15);color:#e8a060;font-size:10px;padding:2px 6px;border-radius:4px">Contractor</span></div></div><div class="mf"><label>Ownership chain</label><div style="font-size:11px;color:var(--text3);line-height:1.7">J. Whitmore · 2019 · $1.18M<br>D. & C. Park · 2011 · $875K</div></div><div class="mf"><label>AI opportunity signal</label><div class="mbar"><div class="mbar-fill" style="width:84%;background:#5dcaa5"></div></div><div style="font-size:10px;color:#5dcaa5;margin-top:5px;font-weight:600">High motivation · equity-rich, lien present</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="slabel">Full comparison</div><div class="sh">Standard vs Comprehensive</div>
+    <div class="comp-wrap"><table class="ctab"><thead><tr><th>Feature</th><th>Standard — $4.99</th><th class="chi">Comprehensive — $19.99</th></tr></thead><tbody><tr><td>Property overview</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Ownership snapshot</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Valuation insights</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Market trends</td><td><span class="ck">✓</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Mortgage & loan data</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Liens & debt obligations</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>Full transaction history</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr><tr><td>AI investment insights</td><td><span class="cx">—</span></td><td class="chi"><span class="ck">✓</span></td></tr></tbody></table></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="11.5" stroke="#9088f0" stroke-width="2.2"/><circle cx="13" cy="13" r="6.2" stroke="#9088f0" stroke-width="1.6"/><path d="M10.5 13c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5" stroke="#9088f0" stroke-width="1.5" stroke-linecap="round"/><circle cx="13" cy="13" r="1.2" fill="#9088f0"/></svg><span class="footer-logo-text">Navigate</span></div>
+      <p class="footer-tagline">The real estate intelligence platform to understand, reach, and convert more opportunities.</p>
+      <div class="footer-legal"><a href="#">Terms of Use</a><span>|</span><a href="#">Privacy Policy</a><span>|</span><a href="#">Cookies</a></div>
+    </div>
+    <div><div class="footer-res-label">Resources</div><a href="#" class="footer-res a" style="display:block;font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:10px">Contact Us</a><a href="#" style="display:block;font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:10px">Support</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="footer-copy">© 2025 Navigate Way, Inc. All rights reserved.</span>
+      <div class="footer-social">
+        <div class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.734-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+        <div class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+        <div class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+        <div class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+        <div class="si"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchPage(id,btn){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.tog button').forEach(function(b){b.className='off'});
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn)btn.className='on';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function ok(v){return v.trim().length>0}
+function okE(v){return v.indexOf('@')>0&&v.indexOf('.')>0&&v.length>5}
+function chkS(){
+  var go=ok(document.getElementById('s-first').value)&&ok(document.getElementById('s-last').value)&&okE(document.getElementById('s-email').value)&&document.getElementById('s-prof').value&&document.getElementById('s-addr').value.trim().length>4;
+  document.getElementById('s-btn').className=go?'get-btn ready':'get-btn';
+}
+function chkC(){
+  var go=ok(document.getElementById('c-first').value)&&ok(document.getElementById('c-last').value)&&okE(document.getElementById('c-email').value)&&document.getElementById('c-prof').value&&document.getElementById('c-addr').value.trim().length>4;
+  document.getElementById('c-btn').className=go?'get-btn ready':'get-btn';
+}
+function subS(){
+  if(!document.getElementById('s-btn').classList.contains('ready'))return;
+  document.getElementById('s-confirm').textContent=document.getElementById('s-email').value.trim();
+  document.getElementById('intake-std').style.display='none';
+  document.getElementById('success-std').style.display='block';
+}
+function subC(){
+  if(!document.getElementById('c-btn').classList.contains('ready'))return;
+  document.getElementById('c-confirm').textContent=document.getElementById('c-email').value.trim();
+  document.getElementById('intake-comp').style.display='none';
+  document.getElementById('success-comp').style.display='block';
+}
+</script>
