@@ -20,9 +20,6 @@ export default {
           400: '#c0b8ff',
           300: '#d4c5ff',
         },
-        teal: {
-          500: '#5dcaa5',
-        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
