@@ -6,6 +6,8 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     lastName: '',
     email: '',
     profession: '',
+    address: '',
+    connectSalesRep: true,
   })
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -15,7 +17,8 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     formData.firstName.trim() &&
     formData.lastName.trim() &&
     formData.email.includes('@') &&
-    formData.profession
+    formData.profession &&
+    formData.address.trim().length > 4
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -51,6 +54,8 @@ export default function IntakeForm({ onSubmit, buttonText }) {
       lastName: '',
       email: '',
       profession: '',
+      address: '',
+      connectSalesRep: true,
     })
   }
 
@@ -143,25 +148,48 @@ export default function IntakeForm({ onSubmit, buttonText }) {
         </div>
       </div>
 
+      {/* Sales Rep Checkbox */}
+      <label className="flex gap-3 bg-purple-600/10 border border-purple-600/30 rounded-lg p-4 cursor-pointer hover:bg-purple-600/15 transition">
+        <input
+          type="checkbox"
+          checked={formData.connectSalesRep}
+          onChange={(e) => setFormData({...formData, connectSalesRep: e.target.checked})}
+          className="w-5 h-5 accent-purple-600 mt-0.5 cursor-pointer"
+        />
+        <div>
+          <p className="font-bold text-sm text-purple-300">Connect with a Navigate Sales Rep to extract even more value from the report</p>
+          <p className="text-xs text-slate-400 mt-1">We're here to help you spot the signals that help you <span className="font-bold text-white">WIN MORE LISTINGS</span></p>
+        </div>
+      </label>
+
+      {/* Address Field & Button */}
+      <div className="flex gap-3">
+        <input
+          type="text"
+          placeholder="Enter a property address..."
+          value={formData.address}
+          onChange={(e) => setFormData({...formData, address: e.target.value})}
+          className="flex-1 bg-slate-800/50 border border-slate-700 rounded-full px-5 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition"
+        />
+        <button
+          type="submit"
+          disabled={!isComplete || loading}
+          className={`px-6 py-3 rounded-full font-bold whitespace-nowrap transition ${
+            isComplete && !loading
+              ? 'bg-purple-600 hover:bg-purple-500 text-white cursor-pointer shadow-lg shadow-purple-600/50'
+              : 'bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
+        >
+          {loading ? 'Submitting...' : buttonText}
+        </button>
+      </div>
+
       {/* Error Message */}
       {error && (
         <div className="bg-red-500/20 border border-red-500/50 text-red-300 text-sm p-3 rounded-lg">
           {error}
         </div>
       )}
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={!isComplete || loading}
-        className={`w-full py-3 rounded-lg font-bold transition ${
-          isComplete && !loading
-            ? 'bg-purple-600 hover:bg-purple-500 text-white cursor-pointer shadow-lg shadow-purple-600/50'
-            : 'bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
-      >
-        {loading ? 'Submitting...' : buttonText}
-      </button>
 
       <p className="text-xs text-slate-500 text-center">Your information is kept private and never sold.</p>
     </form>
