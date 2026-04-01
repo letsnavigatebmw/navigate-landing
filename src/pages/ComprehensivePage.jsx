@@ -104,13 +104,13 @@ export default function ComprehensivePage({ setCurrentPage }) {
       <div className="border-b border-slate-800" />
 
       {/* TWO COLUMN SECTION */}
-      <section className="py-20 px-6">
+      <section className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Left Column */}
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
-              <h3 className="text-4xl font-bold mb-8 text-white">Make Better Decisions, Faster</h3>
+              <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">Make Better Decisions, Faster</h3>
               <ul className="space-y-4 text-slate-300">
                 {[
                   'Identify motivated sellers through equity and debt signals',
@@ -130,8 +130,8 @@ export default function ComprehensivePage({ setCurrentPage }) {
             {/* Right Column */}
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Who it's for</p>
-              <h3 className="text-4xl font-bold mb-8 text-white">Built for High-Stakes Decisions</h3>
-              <div className="grid grid-cols-2 gap-4">
+              <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">Built for High-Stakes Decisions</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { title: 'Agents', desc: 'Preparing listing presentations' },
                   { title: 'Investors', desc: 'Underwriting deals' },
@@ -150,7 +150,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
       </section>
 
       {/* COMPARISON TABLE */}
-      <section className="py-20 px-6">
+      <section className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <SectionLabel 
             label="Comparison"
@@ -190,13 +190,13 @@ export default function ComprehensivePage({ setCurrentPage }) {
       </section>
 
       {/* SAMPLE REPORT */}
-      <section className="py-20 px-6 bg-slate-900/30">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-slate-900/30">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Text */}
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Sample report</p>
-              <h3 className="text-4xl font-bold mb-4 text-white">A Complete View, One Report</h3>
+              <h3 className="text-2xl sm:text-4xl font-bold mb-4 text-white">A Complete View, One Report</h3>
               <p className="text-slate-400">Delivered as a PDF directly to your inbox within minutes.</p>
             </div>
 

@@ -84,7 +84,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
       <p className="text-sm font-semibold text-slate-300 mb-6">Fill in your details to receive your report</p>
 
       {/* Names */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-bold uppercase text-slate-500 mb-2">First name</label>
           <input
@@ -163,7 +163,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
       </label>
 
       {/* Address Field & Button */}
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="text"
           placeholder="Enter a property address..."
@@ -174,7 +174,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
         <button
           type="submit"
           disabled={!isComplete || loading}
-          className={`px-6 py-3 rounded-full font-bold whitespace-nowrap transition ${
+          className={`px-6 py-3 sm:py-3 rounded-full font-bold min-h-[44px] flex items-center justify-center transition ${
             isComplete && !loading
               ? 'bg-purple-600 hover:bg-purple-500 text-white cursor-pointer shadow-lg shadow-purple-600/50'
               : 'bg-slate-700 text-slate-400 cursor-not-allowed'
