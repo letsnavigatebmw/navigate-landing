@@ -165,6 +165,55 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
+      {/* COMPARISON TABLE */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel 
+            label="Comparison"
+            title="Standard vs Comprehensive"
+          />
+
+          <div className="overflow-x-auto border border-slate-700 rounded-lg">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-slate-900/50 border-b border-slate-700">
+                  <th className="text-left py-4 px-6 text-sm font-bold text-slate-300">Feature</th>
+                  <th className="text-center py-4 px-6 text-sm font-bold text-slate-300">Standard — $4.99</th>
+                  <th className="text-center py-4 px-6 text-sm font-bold text-slate-300">Comprehensive — $19.99</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { name: 'Property overview', standard: true, comprehensive: true },
+                  { name: 'Ownership snapshot', standard: true, comprehensive: true },
+                  { name: 'Valuation insights', standard: true, comprehensive: true },
+                  { name: 'Market trends', standard: true, comprehensive: true },
+                  { name: 'Mortgage & loan data', standard: false, comprehensive: true },
+                  { name: 'Liens & debt obligations', standard: false, comprehensive: true },
+                  { name: 'AI investment insights', standard: false, comprehensive: true },
+                ].map((item, i) => (
+                  <tr key={i} className="border-b border-slate-800 hover:bg-slate-900/30 transition">
+                    <td className="py-3 px-6 text-slate-300 text-sm">{item.name}</td>
+                    <td className="text-center py-3 px-6 text-purple-400 font-bold">{item.standard ? '✓' : '—'}</td>
+                    <td className="text-center py-3 px-6 text-purple-400 font-bold">{item.comprehensive ? '✓' : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 bg-purple-600/10 border border-purple-600/30 rounded-lg p-6 text-center">
+            <p className="text-slate-300 text-sm mb-4">Looking for full financial and ownership intelligence? The Comprehensive Report uncovers what most platforms miss.</p>
+            <button
+              onClick={() => setCurrentPage('comprehensive')}
+              className="text-purple-400 hover:text-purple-300 font-bold text-sm"
+            >
+              View Comprehensive — $19.99 →
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* SAMPLE REPORT */}
       <section className="py-20 px-6 bg-slate-900/30">
         <div className="max-w-7xl mx-auto">
