@@ -131,6 +131,18 @@ export default function IntakeForm({ onSubmit, buttonText }) {
         </select>
       </div>
 
+      {/* Inbox Callout */}
+      <div className="flex gap-3 bg-teal-500/10 border border-teal-500/30 rounded-lg p-4">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-1">
+          <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#5dcaa5" strokeWidth="1.4"/>
+          <path d="M1.5 5.5l6.5 4 6.5-4" stroke="#5dcaa5" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <div>
+          <p className="font-bold text-sm text-teal-400">Delivered straight to your inbox</p>
+          <p className="text-xs text-slate-400 mt-1">Your report arrives as a branded PDF within minutes of submitting.</p>
+        </div>
+      </div>
+
       {/* Error Message */}
       {error && (
         <div className="bg-red-500/20 border border-red-500/50 text-red-300 text-sm p-3 rounded-lg">
