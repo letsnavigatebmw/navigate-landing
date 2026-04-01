@@ -1,25 +1,22 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import Pricing from './components/Pricing'
-import Features from './components/Features'
-import WhatYouGet from './components/WhatYouGet'
-import TakeAction from './components/TakeAction'
-import SampleReport from './components/SampleReport'
-import Comparison from './components/Comparison'
-import Footer from './components/Footer'
+import PageToggle from './components/PageToggle'
+import StandardPage from './pages/StandardPage'
+import ComprehensivePage from './pages/ComprehensivePage'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('standard')
+
   return (
     <div className="bg-slate-950 min-h-screen text-white">
       <Header />
-      <Hero />
-      <Pricing />
-      <WhatYouGet />
-      <TakeAction />
-      <SampleReport />
-      <Comparison />
-      <Footer />
+      <PageToggle currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      
+      {currentPage === 'standard' ? (
+        <StandardPage setCurrentPage={setCurrentPage} />
+      ) : (
+        <ComprehensivePage setCurrentPage={setCurrentPage} />
+      )}
     </div>
   )
 }

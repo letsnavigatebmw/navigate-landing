@@ -2,26 +2,27 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        purple: {
-          600: '#7C3AED',
-          500: '#A855F7',
-          400: '#C084FC',
-        },
         slate: {
-          950: '#0F172A',
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
-          600: '#475569',
-          500: '#64748B',
-          400: '#94A3B8',
-          300: '#CBD5E1',
-        }
+          950: '#08080f',
+          900: '#0e0e1c',
+          800: '#1a1a35',
+          700: '#2a2660',
+        },
+        purple: {
+          700: '#534AB7',
+          600: '#7c72e8',
+          500: '#9088f0',
+          400: '#c0b8ff',
+          300: '#d4c5ff',
+        },
+        teal: {
+          500: '#5dcaa5',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
