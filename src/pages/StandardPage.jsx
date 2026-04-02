@@ -75,7 +75,7 @@ export default function StandardPage({ setCurrentPage }) {
     <div className="bg-slate-950">
       {/* ===== MOBILE LAYOUT (shown only on mobile, md:hidden) ===== */}
 
-      {/* MOBILE: HERO + FORM (Above Fold) */}
+      {/* MOBILE: HERO (No Form - moved to bottom) */}
       <section className="block md:hidden pt-16 pb-12 px-4 max-w-7xl mx-auto">
         <div className="text-center">
           <HeroPill label="Standard Report" price="4.99" />
@@ -86,14 +86,16 @@ export default function StandardPage({ setCurrentPage }) {
           <p className="text-base text-slate-300 max-w-2xl mx-auto mb-8">
             A fast, reliable snapshot of any property. Ownership, value, and market activity, so you can prospect smarter and move faster.
           </p>
-        </div>
-
-        <div className="max-w-2xl mx-auto mb-8">
-          <IntakeForm 
-            buttonText="Get Report — $4.99"
-            defaultChecked={false}
-          />
-          <p className="text-xs text-slate-500 text-center mt-4">✓ Delivered in 5-10 minutes · ✓ PDF format · ✓ No subscription</p>
+          
+          <button
+            onClick={() => {
+              const element = document.getElementById('order-form-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition"
+          >
+            Get Report — $4.99
+          </button>
         </div>
       </section>
 
@@ -165,6 +167,15 @@ export default function StandardPage({ setCurrentPage }) {
               className="text-purple-400 hover:text-purple-300 text-sm font-bold"
             >
               Need more? See Comprehensive Report →
+            </button>
+            <button
+              onClick={() => {
+                const element = document.getElementById('order-form-section');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="block mx-auto mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition text-sm"
+            >
+              Get Report — $4.99
             </button>
           </div>
         </div>
@@ -280,15 +291,31 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
-      {/* MOBILE: FINAL CTA */}
-      <section className="block md:hidden py-16 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-6 text-white">Ready to Get Started?</h2>
+      {/* OFFER STATEMENT + FORM (Both Mobile & Desktop) */}
+      <section id="order-form-section" className="py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
+        <div className="max-w-3xl mx-auto">
+          {/* MOBILE: Offer Statement */}
+          <div className="block md:hidden mb-12 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-white">Get the Standard Report</h2>
+            <p className="text-slate-300 mb-2">Fast, accurate property snapshots for prospecting</p>
+            <p className="text-3xl font-bold text-purple-400 mb-6">$4.99 per report</p>
+            <p className="text-sm text-slate-400 mb-8">Use it for: Quick property qualification, prospect identification, market analysis. Delivered in 5-10 minutes as a PDF.</p>
+          </div>
+
+          {/* DESKTOP: Offer Statement */}
+          <div className="hidden md:block mb-12 text-center">
+            <h2 className="text-4xl font-bold mb-4 text-white">Ready to Get Started?</h2>
+            <p className="text-lg text-slate-300 mb-2">Get the Standard Report for just</p>
+            <p className="text-4xl font-bold text-purple-400 mb-4">$4.99</p>
+            <p className="text-slate-400 mb-8">Fast property snapshots for prospecting. Use it to qualify leads, identify opportunities, and analyze your market. Delivered in 5-10 minutes as a PDF.</p>
+          </div>
+
+          {/* Form */}
           <IntakeForm 
             buttonText="Get Report — $4.99"
             defaultChecked={false}
           />
-          <p className="text-xs text-slate-500 mt-4">Delivered in minutes · No subscription · Cancel anytime</p>
+          <p className="text-xs text-slate-500 text-center mt-4">✓ Delivered in 5-10 minutes · ✓ PDF format · ✓ No subscription · ✓ Instant download</p>
         </div>
       </section>
 
@@ -305,10 +332,15 @@ export default function StandardPage({ setCurrentPage }) {
           A fast, reliable snapshot of any property. Ownership, value, and market activity, so you can prospect smarter and move faster.
         </p>
 
-        <IntakeForm 
-          buttonText="Get Report — $4.99"
-          defaultChecked={false}
-        />
+        <button
+          onClick={() => {
+            const element = document.getElementById('order-form-section');
+            element?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition text-lg mb-12"
+        >
+          Get Report — $4.99
+        </button>
 
         <div className="mt-12 max-w-xl mx-auto bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-6">
           <p className="italic text-slate-300 mb-4">"I purchased the comprehensive report and spoke to a Navigate sales rep and it unlocked so much more value — I was able to spot signals that I otherwise would have missed."</p>
@@ -475,6 +507,17 @@ export default function StandardPage({ setCurrentPage }) {
             >
               View Comprehensive — $19.99 →
             </button>
+            <div className="mt-4 pt-4 border-t border-purple-600/30">
+              <button
+                onClick={() => {
+                  const element = document.getElementById('order-form-section');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition text-sm"
+              >
+                Order Standard Report — $4.99 →
+              </button>
+            </div>
           </div>
         </div>
       </section>
