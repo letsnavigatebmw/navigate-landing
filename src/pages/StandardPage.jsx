@@ -291,34 +291,6 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
-      {/* OFFER STATEMENT + FORM (Both Mobile & Desktop) */}
-      <section id="order-form-section" className="py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
-        <div className="max-w-3xl mx-auto">
-          {/* MOBILE: Offer Statement */}
-          <div className="block md:hidden mb-12 text-center">
-            <h2 className="text-2xl font-bold mb-4 text-white">Get the Standard Report</h2>
-            <p className="text-slate-300 mb-2">Fast, accurate property snapshots for prospecting</p>
-            <p className="text-3xl font-bold text-purple-400 mb-6">$4.99 per report</p>
-            <p className="text-sm text-slate-400 mb-8">Use it for: Quick property qualification, prospect identification, market analysis. Delivered in 5-10 minutes as a PDF.</p>
-          </div>
-
-          {/* DESKTOP: Offer Statement */}
-          <div className="hidden md:block mb-12 text-center">
-            <h2 className="text-4xl font-bold mb-4 text-white">Ready to Get Started?</h2>
-            <p className="text-lg text-slate-300 mb-2">Get the Standard Report for just</p>
-            <p className="text-4xl font-bold text-purple-400 mb-4">$4.99</p>
-            <p className="text-slate-400 mb-8">Fast property snapshots for prospecting. Use it to qualify leads, identify opportunities, and analyze your market. Delivered in 5-10 minutes as a PDF.</p>
-          </div>
-
-          {/* Form */}
-          <IntakeForm 
-            buttonText="Get Report — $4.99"
-            defaultChecked={false}
-          />
-          <p className="text-xs text-slate-500 text-center mt-4">✓ Delivered in 5-10 minutes · ✓ PDF format · ✓ No subscription · ✓ Instant download</p>
-        </div>
-      </section>
-
       {/* ===== DESKTOP LAYOUT (hidden on mobile, hidden md:block) ===== */}
 
       {/* DESKTOP: HERO */}
@@ -567,6 +539,36 @@ export default function StandardPage({ setCurrentPage }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* MOBILE: Offer Statement (above form on mobile) */}
+      <section className="block md:hidden py-12 px-4 bg-slate-900/50">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4 text-white">Get the Standard Report</h2>
+          <p className="text-slate-300 mb-2">Fast, accurate property snapshots for prospecting</p>
+          <p className="text-3xl font-bold text-purple-400 mb-6">$4.99 per report</p>
+          <p className="text-sm text-slate-400 mb-8">Use it for: Quick property qualification, prospect identification, market analysis. Delivered in 5-10 minutes as a PDF.</p>
+        </div>
+      </section>
+
+      {/* OFFER STATEMENT + FORM (Both Mobile & Desktop at Bottom) */}
+      <section id="order-form-section" className="py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
+        <div className="max-w-3xl mx-auto">
+          {/* DESKTOP: Offer Statement (only desktop, already shown on mobile above) */}
+          <div className="hidden md:block mb-12 text-center">
+            <h2 className="text-4xl font-bold mb-4 text-white">Ready to Get Started?</h2>
+            <p className="text-lg text-slate-300 mb-2">Get the Standard Report for just</p>
+            <p className="text-4xl font-bold text-purple-400 mb-4">$4.99</p>
+            <p className="text-slate-400 mb-8">Fast property snapshots for prospecting. Use it to qualify leads, identify opportunities, and analyze your market. Delivered in 5-10 minutes as a PDF.</p>
+          </div>
+
+          {/* Form (shown on both mobile & desktop) */}
+          <IntakeForm 
+            buttonText="Get Report — $4.99"
+            defaultChecked={false}
+          />
+          <p className="text-xs text-slate-500 text-center mt-4">✓ Delivered in 5-10 minutes · ✓ PDF format · ✓ No subscription · ✓ Instant download</p>
         </div>
       </section>
 

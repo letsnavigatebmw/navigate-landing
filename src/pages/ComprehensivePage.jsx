@@ -592,6 +592,36 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </div>
       </section>
 
+      {/* MOBILE: Offer Statement (above form on mobile) */}
+      <section className="block md:hidden py-12 px-4 bg-slate-900/50">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-4 text-white">Get the Comprehensive Report</h2>
+          <p className="text-slate-300 mb-2">Full financial & ownership intelligence for serious decisions</p>
+          <p className="text-3xl font-bold text-purple-400 mb-6">$19.99 per report</p>
+          <p className="text-sm text-slate-400 mb-8">Use it for: Investment underwriting, motivated seller identification, deal analysis, risk assessment. Delivered in 5-10 minutes as a PDF.</p>
+        </div>
+      </section>
+
+      {/* OFFER STATEMENT + FORM (Both Mobile & Desktop at Bottom) */}
+      <section id="order-form-section" className="py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
+        <div className="max-w-3xl mx-auto">
+          {/* DESKTOP: Offer Statement (only desktop, already shown on mobile above) */}
+          <div className="hidden md:block mb-12 text-center">
+            <h2 className="text-4xl font-bold mb-4 text-white">Ready to Underwrite Smarter?</h2>
+            <p className="text-lg text-slate-300 mb-2">Get the Comprehensive Report for just</p>
+            <p className="text-4xl font-bold text-purple-400 mb-4">$19.99</p>
+            <p className="text-slate-400 mb-8">Full financial & ownership intelligence. Use it to underwrite deals, identify motivated sellers, analyze risk, and make investment decisions with confidence. Delivered in 5-10 minutes as a PDF.</p>
+          </div>
+
+          {/* Form (shown on both mobile & desktop) */}
+          <IntakeForm 
+            buttonText="Get Full Report — $19.99"
+            defaultChecked={true}
+          />
+          <p className="text-xs text-slate-500 text-center mt-4">✓ Delivered in 5-10 minutes · ✓ PDF format · ✓ No subscription · ✓ Instant download</p>
+        </div>
+      </section>
+
       <Footer />
     </div>
   )
