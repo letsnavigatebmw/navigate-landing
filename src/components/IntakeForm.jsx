@@ -32,6 +32,9 @@ export default function IntakeForm({ onSubmit, buttonText }) {
         'https://script.google.com/macros/s/AKfycbxiAYsg1SCqy6DMmcjK7oCXqJdNveMqhNuA7RturrUGfKWaFu7kyI09YnfvkfmnH_OMjg/exec',
         {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
             firstName: formData.firstName,
             lastName: formData.lastName,
@@ -39,14 +42,15 @@ export default function IntakeForm({ onSubmit, buttonText }) {
             profession: formData.profession,
             address: formData.address,
             connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-          }),
-          mode: 'no-cors'
+          })
         }
       )
 
+      console.log('Form submission response:', response)
       setSuccess(true)
       if (onSubmit) onSubmit(formData)
     } catch (err) {
+      console.error('Form submission error:', err)
       setError('Failed to submit. Please try again.')
       console.error(err)
     } finally {
