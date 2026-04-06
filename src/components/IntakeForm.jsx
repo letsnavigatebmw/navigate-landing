@@ -29,7 +29,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
 
     try {
       await fetch(
-        'https://script.google.com/macros/s/AKfycbxiAYsg1SCqy6DMmcjK7oCXqJdNveMqhNuA7RturrUGfKWaFu7kyI09YnfvkfmnH_OMjg/exec',
+        'https://script.google.com/macros/s/AKfycbwzGIQmYDPT9y7Lo70GfeVxB3HacNIzs8lxt9wmHGj3ylsV05pt2vUQ6_xnwxqaLupkKA/exec',
         {
           method: 'POST',
           body: JSON.stringify({
