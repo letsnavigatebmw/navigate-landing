@@ -29,12 +29,9 @@ export default function IntakeForm({ onSubmit, buttonText }) {
 
     try {
       const response = await fetch(
-        'https://formspree.io/f/xojpyerz',
+        'https://script.google.com/macros/s/AKfycbxiAYsg1SCqy6DMmcjK7oCXqJdNveMqhNuA7RturrUGfKWaFu7kyI09YnfvkfmnH_OMjg/exec',
         {
           method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
           body: JSON.stringify({
             firstName: formData.firstName,
             lastName: formData.lastName,
@@ -42,16 +39,13 @@ export default function IntakeForm({ onSubmit, buttonText }) {
             profession: formData.profession,
             address: formData.address,
             connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-          })
+          }),
+          mode: 'no-cors'
         }
       )
 
-      if (response.ok) {
-        setSuccess(true)
-        if (onSubmit) onSubmit(formData)
-      } else {
-        setError('Failed to submit. Please try again.')
-      }
+      setSuccess(true)
+      if (onSubmit) onSubmit(formData)
     } catch (err) {
       setError('Failed to submit. Please try again.')
       console.error(err)
