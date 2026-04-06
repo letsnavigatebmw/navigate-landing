@@ -28,17 +28,28 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
+      const formDataToSend = new FormData()
+      formDataToSend.append('firstName', formData.firstName)
+      formDataToSend.append('lastName', formData.lastName)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('profession', formData.profession)
+      formDataToSend.append('address', formData.address)
+      formDataToSend.append('connectSalesRep', formData.connectSalesRep ? 'Yes' : 'No')
+
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbx3O-Nr8kWjcPeoe_BfqPILL5prxXZV1jHMoSWrcxRyBM_8AuSq2t-AOugadCJL-4v1Tg/exec',
+        'https://formspree.io/f/xojpyerz',
         {
           method: 'POST',
-          body: JSON.stringify(formData),
-          mode: 'no-cors',
+          body: formDataToSend,
         }
       )
 
-      setSuccess(true)
-      if (onSubmit) onSubmit(formData)
+      if (response.ok) {
+        setSuccess(true)
+        if (onSubmit) onSubmit(formData)
+      } else {
+        setError('Failed to submit. Please try again.')
+      }
     } catch (err) {
       setError('Failed to submit. Please try again.')
       console.error(err)
