@@ -28,18 +28,19 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
+      const formBody = new URLSearchParams()
+      formBody.append('firstName', formData.firstName)
+      formBody.append('lastName', formData.lastName)
+      formBody.append('email', formData.email)
+      formBody.append('profession', formData.profession)
+      formBody.append('address', formData.address)
+      formBody.append('connectSalesRep', formData.connectSalesRep ? 'Yes' : 'No')
+
       await fetch(
         'https://script.google.com/macros/s/AKfycbwzGIQmYDPT9y7Lo70GfeVxB3HacNIzs8lxt9wmHGj3ylsV05pt2vUQ6_xnwxqaLupkKA/exec',
         {
           method: 'POST',
-          body: JSON.stringify({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            profession: formData.profession,
-            address: formData.address,
-            connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-          }),
+          body: formBody,
           mode: 'no-cors'
         }
       )
