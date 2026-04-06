@@ -28,19 +28,21 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
-      const formDataToSend = new FormData()
-      formDataToSend.append('firstName', formData.firstName)
-      formDataToSend.append('lastName', formData.lastName)
-      formDataToSend.append('email', formData.email)
-      formDataToSend.append('profession', formData.profession)
-      formDataToSend.append('address', formData.address)
-      formDataToSend.append('connectSalesRep', formData.connectSalesRep ? 'Yes' : 'No')
-
       const response = await fetch(
         'https://formspree.io/f/xojpyerz',
         {
           method: 'POST',
-          body: formDataToSend,
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            profession: formData.profession,
+            address: formData.address,
+            connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
+          })
         }
       )
 
