@@ -29,7 +29,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
 
     try {
       await fetch(
-        'https://formspree.io/f/xojpyerz',
+        'https://formspree.io/brandon@navigatenow.com',
         {
           method: 'POST',
           body: JSON.stringify({
