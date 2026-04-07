@@ -28,7 +28,7 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
-      const response = await fetch('/api/ghl-contact', {
+      const response = await fetch('https://hooks.zapier.com/hooks/catch/21063797/u7hpz3t/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -39,13 +39,9 @@ export default function IntakeForm({ onSubmit, buttonText }) {
           email: formData.email,
           profession: formData.profession,
           address: formData.address,
-          connectSalesRep: formData.connectSalesRep
+          connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
         })
       })
-
-      if (!response.ok) {
-        throw new Error('Failed to submit')
-      }
 
       setSuccess(true)
       if (onSubmit) onSubmit(formData)
