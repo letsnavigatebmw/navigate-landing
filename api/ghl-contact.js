@@ -13,8 +13,9 @@ export default async function handler(req, res) {
 
   try {
     // Call GHL API server-to-server
+    const locationId = '43Xi60wa4lSulJKj0Zq9'
     const response = await fetch(
-      'https://rest.gohighlevel.com/v1/contacts/',
+      `https://rest.gohighlevel.com/v1/locations/${locationId}/contacts/`,
       {
         method: 'POST',
         headers: {
