@@ -28,20 +28,21 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/21063797/u7hpz3t/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          profession: formData.profession,
-          address: formData.address,
-          connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-        })
-      })
+      await fetch(
+        'https://formspree.io/f/xojpyerz',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            profession: formData.profession,
+            address: formData.address,
+            connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
+          }),
+          mode: 'no-cors'
+        }
+      )
 
       setSuccess(true)
       if (onSubmit) onSubmit(formData)
