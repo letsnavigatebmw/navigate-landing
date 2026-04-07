@@ -28,21 +28,30 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
-      await fetch(
-        'https://formspree.io/f/xojpyerz',
+      const response = await fetch(
+        'https://rest.gohighlevel.com/v1/contacts/',
         {
           method: 'POST',
+          headers: {
+            'Authorization': 'Bearer pit-6a9f8ace-7368-4b61-ba79-911bc5dadb46',
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
-            profession: formData.profession,
-            address: formData.address,
-            connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-          }),
-          mode: 'no-cors'
+            customFields: {
+              profession: formData.profession,
+              address: formData.address,
+              connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
+            }
+          })
         }
       )
+
+      if (!response.ok) {
+        throw new Error('Failed to submit to GHL')
+      }
 
       setSuccess(true)
       if (onSubmit) onSubmit(formData)
