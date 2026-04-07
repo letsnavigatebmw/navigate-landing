@@ -28,29 +28,23 @@ export default function IntakeForm({ onSubmit, buttonText }) {
     setError(null)
 
     try {
-      const response = await fetch(
-        'https://rest.gohighlevel.com/v1/contacts/',
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer pit-6a9f8ace-7368-4b61-ba79-911bc5dadb46',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            customFields: {
-              profession: formData.profession,
-              address: formData.address,
-              connectSalesRep: formData.connectSalesRep ? 'Yes' : 'No'
-            }
-          })
-        }
-      )
+      const response = await fetch('/api/ghl-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          profession: formData.profession,
+          address: formData.address,
+          connectSalesRep: formData.connectSalesRep
+        })
+      })
 
       if (!response.ok) {
-        throw new Error('Failed to submit to GHL')
+        throw new Error('Failed to submit')
       }
 
       setSuccess(true)
