@@ -4,13 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 mb-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-              <circle cx="13" cy="13" r="11.5" stroke="#9088f0" strokeWidth="2.2"/>
-              <circle cx="13" cy="13" r="6.2" stroke="#9088f0" strokeWidth="1.6"/>
-              <path d="M10.5 13c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5" stroke="#9088f0" strokeWidth="1.5" strokeLinecap="round"/>
-              <circle cx="13" cy="13" r="1.2" fill="#9088f0"/>
-            </svg>
-            <span className="font-bold uppercase text-purple-400">Navigate</span>
+            <img src="/logo.png" alt="Navigate" height="32" className="h-8" />
           </div>
           <p className="text-sm text-slate-400">The real estate intelligence platform to understand, reach, and convert more opportunities.</p>
           <div className="flex gap-2 mt-4 text-xs text-slate-500">
