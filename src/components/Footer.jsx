@@ -3,9 +3,6 @@ export default function Footer() {
     <footer className="bg-slate-950 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 mb-8">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <img src="/logo.png" alt="Navigate" height="32" className="h-8" />
-          </div>
           <p className="text-sm text-slate-400">The real estate intelligence platform to understand, reach, and convert more opportunities.</p>
           <div className="flex gap-2 mt-4 text-xs text-slate-500">
             <a href="#" className="hover:text-slate-300">Terms</a>
