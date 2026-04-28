@@ -31,7 +31,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
     {
       quote: " walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went.",
       author: "Evan Dolmatsky",
-      title: "The Beverly Hills Estates",
+      title: "Estates Director, The Beverly Hills Estates",
       initials: "ED"
     },
     {
@@ -344,13 +344,13 @@ export default function ComprehensivePage({ setCurrentPage }) {
           Get Full Report — $19.99
         </button>
 
-        <div className="mt-12 max-w-xl mx-auto bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-6">
+        <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-6">
           <p className="italic text-slate-300 mb-4">" walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white">ED</div>
             <div className="text-left">
               <p className="text-sm font-bold text-purple-300">Evan Dolmatsky</p>
-              <p className="text-xs text-slate-500">The Beverly Hills Estates</p>
+              <p className="text-xs text-slate-500">Estates Director, The Beverly Hills Estates</p>
             </div>
           </div>
         </div>
