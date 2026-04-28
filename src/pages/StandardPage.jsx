@@ -29,10 +29,10 @@ export default function StandardPage({ setCurrentPage }) {
 
   const testimonials = [
     {
-      quote: "I purchased the comprehensive report and spoke to a Navigate sales rep and it unlocked so much more value — I was able to spot signals that I otherwise would have missed.",
-      author: "Brooke Winner",
+      quote: " walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went.",
+      author: "Evan Dolmatsky",
       title: "The Beverly Hills Estates",
-      initials: "BW"
+      initials: "ED"
     },
     {
       quote: "The Standard Report gives me everything I need for initial prospecting. Fast, accurate, and no fluff. This saves me hours every week.",
@@ -315,11 +315,11 @@ export default function StandardPage({ setCurrentPage }) {
         </button>
 
         <div className="mt-12 max-w-xl mx-auto bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-6">
-          <p className="italic text-slate-300 mb-4">"I purchased the comprehensive report and spoke to a Navigate sales rep and it unlocked so much more value — I was able to spot signals that I otherwise would have missed."</p>
+          <p className="italic text-slate-300 mb-4">" walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white">BW</div>
+            <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white">ED</div>
             <div className="text-left">
-              <p className="text-sm font-bold text-purple-300">Brooke Winner</p>
+              <p className="text-sm font-bold text-purple-300">Evan Dolmatsky</p>
               <p className="text-xs text-slate-500">The Beverly Hills Estates</p>
             </div>
           </div>
@@ -429,6 +429,50 @@ export default function StandardPage({ setCurrentPage }) {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DESKTOP: YOUR EDGE SECTION */}
+      <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-white">Your Edge in Every Listing Presentation</h2>
+              <ul className="space-y-6 text-slate-300">
+                {[
+                  {
+                    title: 'Built for the Listing, Not Just the Data',
+                    desc: 'Walk into every presentation with a clean, client-ready report that elevates how prepared and professional you look.'
+                  },
+                  {
+                    title: 'Save Hours, Not Minutes',
+                    desc: 'No more stitching together comps and data—get a complete, polished report in minutes and reclaim valuable time.'
+                  },
+                  {
+                    title: 'Go Beyond MLS with Deeper Insight',
+                    desc: 'Access ownership, equity, and positioning insights that help you lead a smarter, more strategic conversation.'
+                  },
+                  {
+                    title: 'Stand Out When It Matters Most',
+                    desc: 'While others show up with the same MLS printouts, you show up with something differentiated—giving you a real edge in winning the listing.'
+                  }
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-purple-500 font-bold mt-1">•</span>
+                    <div>
+                      <p className="font-bold text-white">{item.title}</p>
+                      <p className="text-sm text-slate-400 mt-1">{item.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
+              <p className="text-slate-300 text-sm leading-relaxed">
+                The difference between walking in prepared vs. walking in blind isn't just confidence—it's results. Every agent who uses Navigate reports the same thing: conversations change. Sellers feel it. Buyers notice it. And your conversion rates show it.
+              </p>
             </div>
           </div>
         </div>
