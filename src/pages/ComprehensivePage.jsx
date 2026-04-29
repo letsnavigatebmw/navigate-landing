@@ -355,7 +355,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
         <p className="text-xs text-slate-500 mt-6">Investor-grade insights · On demand · No subscription</p>
       </section>
 
-      <div className="hidden md:block border-b border-slate-800" />
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: PRICING */}
       <section className="hidden md:block py-20 px-40 bg-slate-900/50">
@@ -386,7 +386,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </div>
       </section>
 
-      <div className="hidden md:block border-b border-slate-800" />
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: WHY BAND */}
       <section className="hidden md:block py-20 px-6 text-center bg-slate-900">
@@ -399,7 +399,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </p>
       </section>
 
-      <div className="hidden md:block border-b border-slate-800" />
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: TWO COLUMN SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
