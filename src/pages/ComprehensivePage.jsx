@@ -344,15 +344,17 @@ export default function ComprehensivePage({ setCurrentPage }) {
           Get Full Report — $19.99
         </button>
 
-        <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-8 mx-40">
-          <p className="italic text-slate-300 mb-6">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0">ED</div>
-            <div className="text-left">
-              <p className="text-base font-bold text-purple-300">Evan Dolmatsky</p>
-              <p className="text-xs text-slate-500">Estates Director, The Beverly Hills Estates</p>
+        <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-8 mx-40 flex items-start gap-6">
+          <div className="flex-shrink-0">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white">ED</div>
+              <div>
+                <p className="text-base font-bold text-purple-300">Evan Dolmatsky</p>
+                <p className="text-xs text-slate-500">Estates Director, The Beverly Hills Estates</p>
+              </div>
             </div>
           </div>
+          <p className="italic text-slate-300 flex-1 pt-1">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
         </div>
 
         <p className="text-xs text-slate-500 mt-6">Investor-grade insights · On demand · No subscription</p>
