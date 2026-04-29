@@ -314,12 +314,12 @@ export default function StandardPage({ setCurrentPage }) {
           Get Report — $4.99
         </button>
 
-        <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-8 mx-40 flex gap-8">
-          <div className="flex-shrink-0 w-32">
-            <p className="text-sm font-bold text-purple-300 mb-1">Evan Dolmatsky</p>
+        <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-8 mx-40">
+          <p className="italic text-slate-300 mb-4">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
+          <div>
+            <p className="text-base font-bold text-purple-300 mb-1">Evan Dolmatsky</p>
             <p className="text-xs text-slate-500">Estates Director, The Beverly Hills Estates</p>
           </div>
-          <p className="italic text-slate-300 flex-1">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
         </div>
 
         <p className="text-xs text-slate-500 mt-6">No subscription · Delivered in minutes · PDF format</p>
