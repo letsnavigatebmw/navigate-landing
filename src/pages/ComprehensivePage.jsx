@@ -409,8 +409,8 @@ export default function ComprehensivePage({ setCurrentPage }) {
       {/* DESKTOP: TWO COLUMN SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
         <div className="mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-16 items-start">
+            <div className="md:col-span-2">
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
               <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">Make Better Decisions, Faster</h3>
               <ul className="space-y-4 text-slate-300">
@@ -429,10 +429,10 @@ export default function ComprehensivePage({ setCurrentPage }) {
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-3">
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Who it's for</p>
               <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-white">Built for High-Stakes Decisions</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-6">
                 {[
                   { title: 'Agents', desc: 'Preparing listing presentations' },
                   { title: 'Investors', desc: 'Underwriting deals' },
