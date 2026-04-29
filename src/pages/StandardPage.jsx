@@ -356,6 +356,8 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
 
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
+
       {/* DESKTOP: FEATURES */}
       <section className="hidden md:block py-20 px-40">
         <div className="w-full">
@@ -383,6 +385,8 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
+
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: TWO COLUMN */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
@@ -472,6 +476,8 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
+
       {/* DESKTOP: COMPARISON TABLE */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
         <div className="w-full">
@@ -531,6 +537,8 @@ export default function StandardPage({ setCurrentPage }) {
           </div>
         </div>
       </section>
+
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: SAMPLE REPORT */}
       <section className="hidden md:block py-16 sm:py-20 px-40 bg-slate-900/30">

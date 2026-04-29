@@ -397,6 +397,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </p>
       </section>
 
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: TWO COLUMN SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
@@ -486,6 +487,8 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </div>
       </section>
 
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
+
       {/* DESKTOP: COMPARISON TABLE */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
         <div className="mx-auto">
@@ -545,6 +548,8 @@ export default function ComprehensivePage({ setCurrentPage }) {
           </div>
         </div>
       </section>
+
+      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: SAMPLE REPORT */}
       <section className="hidden md:block py-16 sm:py-20 px-40 bg-slate-900/30">
