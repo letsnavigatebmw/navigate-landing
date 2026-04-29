@@ -76,7 +76,7 @@ export default function StandardPage({ setCurrentPage }) {
       {/* ===== MOBILE LAYOUT (shown only on mobile, md:hidden) ===== */}
 
       {/* MOBILE: HERO (No Form - moved to bottom) */}
-      <section className="block md:hidden pt-16 pb-12 px-4 w-full">
+      <section className="block md:hidden pt-16 pb-12 px-24 w-full">
         <div className="text-center">
           <HeroPill label="Standard Report" price="4.99" />
           <HeroHeading>
@@ -100,7 +100,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: SOCIAL PROOF */}
-      <section className="block md:hidden py-12 px-4 bg-slate-900/50">
+      <section className="block md:hidden py-12 px-24 bg-slate-900/50">
         <div className="w-full">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-purple-400 mb-8">Trusted by agents, teams & investors</p>
           <div className="grid grid-cols-1 gap-6">
@@ -123,7 +123,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: HOW IT WORKS */}
-      <section className="block md:hidden py-16 px-4">
+      <section className="block md:hidden py-16 px-24">
         <div className="w-full">
           <h2 className="text-3xl font-bold text-center mb-12 text-white">How It Works</h2>
           <div className="grid grid-cols-1 gap-8">
@@ -145,7 +145,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: WHAT'S INCLUDED (Simplified - 3 col) */}
-      <section className="block md:hidden py-16 px-4 bg-slate-900/50">
+      <section className="block md:hidden py-16 px-24 bg-slate-900/50">
         <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-8 text-white">What's Included</h2>
           <div className="grid grid-cols-1 gap-6">
@@ -182,7 +182,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: SAMPLE REPORT */}
-      <section className="block md:hidden py-16 px-4">
+      <section className="block md:hidden py-16 px-24">
         <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">See What You'll Receive</h2>
           <div className="grid grid-cols-1 gap-8">
@@ -235,7 +235,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: PRICING */}
-      <section className="block md:hidden py-16 px-4 bg-slate-900/50">
+      <section className="block md:hidden py-16 px-24 bg-slate-900/50">
         <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">Simple, Transparent Pricing</h2>
           <div className="grid grid-cols-1 gap-8">
@@ -259,7 +259,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: FAQ */}
-      <section className="block md:hidden py-16 px-4">
+      <section className="block md:hidden py-16 px-24">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">Common Questions</h2>
           <div className="space-y-4">
@@ -284,7 +284,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: GUARANTEE */}
-      <section className="block md:hidden py-12 px-4 bg-purple-600/10 border-t border-b border-purple-600/30">
+      <section className="block md:hidden py-12 px-24 bg-purple-600/10 border-t border-b border-purple-600/30">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg font-bold text-white mb-2">📋 100% Satisfaction Guarantee</p>
           <p className="text-sm text-slate-300">If your report doesn't deliver the insights you expected within 7 days, we'll refund your purchase. No questions asked.</p>
@@ -294,7 +294,7 @@ export default function StandardPage({ setCurrentPage }) {
       {/* ===== DESKTOP LAYOUT (hidden on mobile, hidden md:block) ===== */}
 
       {/* DESKTOP: HERO */}
-      <section className="hidden md:block pt-20 pb-16 px-6 w-full text-center">
+      <section className="hidden md:block pt-20 pb-16 px-24 w-full text-center">
         <HeroPill label="Standard Report" price="4.99" />
         <HeroHeading>
           Get the Property Insights<br />
@@ -331,7 +331,7 @@ export default function StandardPage({ setCurrentPage }) {
       <div className="hidden md:block border-b border-slate-800" />
 
       {/* DESKTOP: PRICING */}
-      <section className="hidden md:block py-20 px-6 bg-slate-900/50">
+      <section className="hidden md:block py-20 px-24 bg-slate-900/50">
         <div className="w-full">
           <SectionLabel 
             label="Pricing" 
@@ -362,7 +362,7 @@ export default function StandardPage({ setCurrentPage }) {
       <div className="hidden md:block border-b border-slate-800" />
 
       {/* DESKTOP: FEATURES */}
-      <section className="hidden md:block py-20 px-6">
+      <section className="hidden md:block py-20 px-24">
         <div className="w-full">
           <SectionLabel 
             label="What you get" 
@@ -391,7 +391,7 @@ export default function StandardPage({ setCurrentPage }) {
       <div className="hidden md:block border-b border-slate-800" />
 
       {/* DESKTOP: TWO COLUMN */}
-      <section className="hidden md:block py-16 sm:py-20 px-6">
+      <section className="hidden md:block py-16 sm:py-20 px-24">
         <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div>
@@ -435,7 +435,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* DESKTOP: YOUR EDGE SECTION */}
-      <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
+      <section className="hidden md:block py-16 sm:py-20 px-24 bg-slate-900/30">
         <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -479,7 +479,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* DESKTOP: COMPARISON TABLE */}
-      <section className="hidden md:block py-16 sm:py-20 px-6">
+      <section className="hidden md:block py-16 sm:py-20 px-24">
         <div className="w-full">
           <SectionLabel 
             label="Comparison"
@@ -539,7 +539,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* DESKTOP: SAMPLE REPORT */}
-      <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
+      <section className="hidden md:block py-16 sm:py-20 px-24 bg-slate-900/30">
         <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
@@ -587,7 +587,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* MOBILE: Offer Statement (above form on mobile) */}
-      <section className="block md:hidden py-12 px-4 bg-slate-900/50">
+      <section className="block md:hidden py-12 px-24 bg-slate-900/50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4 text-white">Get the Standard Report</h2>
           <p className="text-slate-300 mb-2">Fast, accurate property snapshots for prospecting</p>
@@ -597,7 +597,7 @@ export default function StandardPage({ setCurrentPage }) {
       </section>
 
       {/* OFFER STATEMENT + FORM (Both Mobile & Desktop at Bottom) */}
-      <section id="order-form-section" className="py-20 px-4 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
+      <section id="order-form-section" className="py-20 px-24 sm:px-6 bg-gradient-to-b from-slate-900/50 to-slate-950">
         <div className="max-w-3xl mx-auto">
           {/* DESKTOP: Offer Statement (only desktop, already shown on mobile above) */}
           <div className="hidden md:block mb-12 text-center">
