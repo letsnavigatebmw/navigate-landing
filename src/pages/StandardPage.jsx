@@ -325,7 +325,6 @@ export default function StandardPage({ setCurrentPage }) {
         <p className="text-xs text-slate-500 mt-6">No subscription · Delivered in minutes · PDF format</p>
       </section>
 
-      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: PRICING */}
       <section className="hidden md:block py-20 px-40 bg-slate-900/50">
@@ -356,7 +355,6 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
-      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: FEATURES */}
       <section className="hidden md:block py-20 px-40">
@@ -385,7 +383,6 @@ export default function StandardPage({ setCurrentPage }) {
         </div>
       </section>
 
-      <div className="hidden md:block px-40"><div className="border-b border-slate-800"></div></div>
 
       {/* DESKTOP: TWO COLUMN */}
       <section className="hidden md:block py-16 sm:py-20 px-40">
