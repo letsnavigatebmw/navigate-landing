@@ -345,7 +345,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
         </button>
 
         <div className="mt-12 w-full bg-slate-900/50 border-l-4 border-purple-600 rounded-lg p-8 mx-40">
-          <p className="italic text-slate-300 mb-4 -ml-64">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
+          <p className="italic text-slate-300 mb-4 ml-48">"I walked into my listing presentation with this instead of my usual MLS printouts—and you could feel the difference. It completely changed how the conversation went."</p>
           <div className="text-left ml-48">
             <p className="text-base font-bold text-purple-300 mb-1">Evan Dolmatsky</p>
             <p className="text-xs text-slate-500">Estates Director, The Beverly Hills Estates</p>
