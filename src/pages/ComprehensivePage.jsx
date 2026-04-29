@@ -76,7 +76,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
       {/* ===== MOBILE LAYOUT (shown only on mobile, md:hidden) ===== */}
 
       {/* MOBILE: HERO (No Form - moved to bottom) */}
-      <section className="block md:hidden pt-16 pb-12 px-4 max-w-7xl mx-auto">
+      <section className="block md:hidden pt-16 pb-12 px-4 mx-auto">
         <div className="text-center">
           <HeroPill label="Comprehensive Report" price="19.99" />
           <HeroHeading>
@@ -101,7 +101,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* MOBILE: SOCIAL PROOF */}
       <section className="block md:hidden py-12 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-purple-400 mb-8">Trusted by investors, agents & teams</p>
           <div className="grid grid-cols-1 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -137,7 +137,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* MOBILE: HOW IT WORKS */}
       <section className="block md:hidden py-16 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">How It Works</h2>
           <div className="grid grid-cols-1 gap-8">
             {[
@@ -159,7 +159,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* MOBILE: WHAT'S INCLUDED */}
       <section className="block md:hidden py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <h2 className="text-2xl font-bold text-center mb-8 text-white">What's Included</h2>
           <div className="grid grid-cols-1 gap-6">
             <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
@@ -203,7 +203,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* MOBILE: SAMPLE REPORT */}
       <section className="block md:hidden py-16 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">See What You'll Receive</h2>
           <div className="grid grid-cols-1 gap-8">
             <div>
@@ -266,7 +266,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* MOBILE: PRICING */}
       <section className="block md:hidden py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">Simple, Transparent Pricing</h2>
           <div className="grid grid-cols-1 gap-8">
             <PricingCard
@@ -324,7 +324,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
       {/* ===== DESKTOP LAYOUT (hidden on mobile, hidden md:block) ===== */}
 
       {/* DESKTOP: HERO */}
-      <section className="hidden md:block pt-20 pb-16 px-6 max-w-7xl mx-auto text-center">
+      <section className="hidden md:block pt-20 pb-16 px-6 mx-auto text-center">
         <HeroPill label="Comprehensive Report" price="19.99" />
         <HeroHeading>
           See Everything<br />
@@ -362,7 +362,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* DESKTOP: PRICING */}
       <section className="hidden md:block py-20 px-6 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <SectionLabel 
             label="Pricing" 
             title="Simple & Transparent Pricing"
@@ -406,7 +406,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* DESKTOP: TWO COLUMN SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
@@ -450,7 +450,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* DESKTOP: YOUR EDGE SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-white">Your Edge in Every Listing Presentation</h2>
@@ -494,7 +494,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* DESKTOP: COMPARISON TABLE */}
       <section className="hidden md:block py-16 sm:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <SectionLabel 
             label="Comparison"
             title="Standard vs Comprehensive"
@@ -554,7 +554,7 @@ export default function ComprehensivePage({ setCurrentPage }) {
 
       {/* DESKTOP: SAMPLE REPORT */}
       <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Sample report</p>

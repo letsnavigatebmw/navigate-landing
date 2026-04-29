@@ -76,7 +76,7 @@ export default function StandardPage({ setCurrentPage }) {
       {/* ===== MOBILE LAYOUT (shown only on mobile, md:hidden) ===== */}
 
       {/* MOBILE: HERO (No Form - moved to bottom) */}
-      <section className="block md:hidden pt-16 pb-12 px-4 max-w-7xl mx-auto">
+      <section className="block md:hidden pt-16 pb-12 px-4 w-full">
         <div className="text-center">
           <HeroPill label="Standard Report" price="4.99" />
           <HeroHeading>
@@ -101,7 +101,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* MOBILE: SOCIAL PROOF */}
       <section className="block md:hidden py-12 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-purple-400 mb-8">Trusted by agents, teams & investors</p>
           <div className="grid grid-cols-1 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -124,7 +124,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* MOBILE: HOW IT WORKS */}
       <section className="block md:hidden py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <h2 className="text-3xl font-bold text-center mb-12 text-white">How It Works</h2>
           <div className="grid grid-cols-1 gap-8">
             {[
@@ -146,7 +146,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* MOBILE: WHAT'S INCLUDED (Simplified - 3 col) */}
       <section className="block md:hidden py-16 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-8 text-white">What's Included</h2>
           <div className="grid grid-cols-1 gap-6">
             {[
@@ -183,7 +183,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* MOBILE: SAMPLE REPORT */}
       <section className="block md:hidden py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">See What You'll Receive</h2>
           <div className="grid grid-cols-1 gap-8">
             <div>
@@ -236,7 +236,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* MOBILE: PRICING */}
       <section className="block md:hidden py-16 px-4 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">Simple, Transparent Pricing</h2>
           <div className="grid grid-cols-1 gap-8">
             <PricingCard
@@ -294,7 +294,7 @@ export default function StandardPage({ setCurrentPage }) {
       {/* ===== DESKTOP LAYOUT (hidden on mobile, hidden md:block) ===== */}
 
       {/* DESKTOP: HERO */}
-      <section className="hidden md:block pt-20 pb-16 px-6 max-w-7xl mx-auto text-center">
+      <section className="hidden md:block pt-20 pb-16 px-6 w-full text-center">
         <HeroPill label="Standard Report" price="4.99" />
         <HeroHeading>
           Get the Property Insights<br />
@@ -332,7 +332,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: PRICING */}
       <section className="hidden md:block py-20 px-6 bg-slate-900/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <SectionLabel 
             label="Pricing" 
             title="Simple & Transparent Pricing"
@@ -363,7 +363,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: FEATURES */}
       <section className="hidden md:block py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <SectionLabel 
             label="What you get" 
             title="Everything You Need, at a Glance"
@@ -392,7 +392,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: TWO COLUMN */}
       <section className="hidden md:block py-16 sm:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">What you can do with it</p>
@@ -436,7 +436,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: YOUR EDGE SECTION */}
       <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-white">Your Edge in Every Listing Presentation</h2>
@@ -480,7 +480,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: COMPARISON TABLE */}
       <section className="hidden md:block py-16 sm:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <SectionLabel 
             label="Comparison"
             title="Standard vs Comprehensive"
@@ -540,7 +540,7 @@ export default function StandardPage({ setCurrentPage }) {
 
       {/* DESKTOP: SAMPLE REPORT */}
       <section className="hidden md:block py-16 sm:py-20 px-6 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-4">Sample report</p>
